@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Performance Analysis | Bukky Francis</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="brand">
+        <a href="index.html">Bukky Francis</a>
+      </div>
+
+      <div class="nav-links">
+        <a href="index.html">Profile</a>
+        <a href="projects.html" class="active">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main class="project-page">
+
+    <section class="project-hero">
+      <div class="container">
+        <p class="project-tag">Data Analytics Project</p>
+        <h1>Factors Influencing Student Academic Performance</h1>
+        <p class="project-intro">
+          This project explores how behavioural, lifestyle and environmental factors influence
+          student academic performance. Using Excel for cleaning, SQL for analysis and Power BI
+          for visualisation, the project identifies patterns in study habits, attendance, sleep
+          and parental involvement to understand which factors are most strongly linked to exam scores.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Project Overview</h2>
+        <p>
+          Educational outcomes are often shaped by more than just study time. This analysis was carried
+          out to examine the relationship between academic performance and wider factors such as attendance,
+          sleep habits, access to resources and parental support.
+        </p>
+        <p>
+          The aim was to move beyond simple averages and uncover meaningful patterns that could support
+          better decision-making and student support strategies.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Objectives</h2>
+        <ul class="project-list">
+          <li>Analyse how study time relates to exam performance</li>
+          <li>Examine the impact of attendance on academic outcomes</li>
+          <li>Assess whether lifestyle factors such as sleep influence scores</li>
+          <li>Explore how parental involvement and access to resources affect performance</li>
+          <li>Present clear insights through an interactive Power BI dashboard</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Tools Used</h2>
+        <div class="tools-grid">
+          <div class="tool-card">
+            <h3>Excel</h3>
+            <p>Used for data cleaning, validation and preparation before analysis.</p>
+          </div>
+          <div class="tool-card">
+            <h3>SQL</h3>
+            <p>Used to analyse trends, group categories and calculate summary metrics.</p>
+          </div>
+          <div class="tool-card">
+            <h3>Power BI</h3>
+            <p>Used to create an interactive dashboard for visualising key findings.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Data Preparation</h2>
+        <p>
+          The dataset was reviewed in Excel to check for missing values, data consistency and formatting.
+          Fields were assessed to ensure they were suitable for analysis and visualisation.
+        </p>
+        <p>
+          Additional grouping was used where helpful to support interpretation, such as comparing performance
+          across categories of attendance, sleep hours and study time.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>SQL Analysis</h2>
+
+        <p>
+          SQL queries were used to explore relationships between academic performance and the key
+          factors in the dataset.
+        </p>
+
+        <h4>Average Exam Score by Study Hours</h4>
+        <pre class="code-block"><code>SELECT
+    Study_Hours_Per_Day,
+    ROUND(AVG(Exam_Score), 2) AS avg_exam_score
+FROM student_performance
+GROUP BY Study_Hours_Per_Day
+ORDER BY Study_Hours_Per_Day;</code></pre>
+
+        <h4>Average Exam Score by Attendance</h4>
+        <pre class="code-block"><code>SELECT
+    Attendance,
+    ROUND(AVG(Exam_Score), 2) AS avg_exam_score
+FROM student_performance
+GROUP BY Attendance
+ORDER BY Attendance;</code></pre>
+
+        <h4>Average Exam Score by Sleep Hours</h4>
+        <pre class="code-block"><code>SELECT
+    Sleep_Hours_Per_Day,
+    ROUND(AVG(Exam_Score), 2) AS avg_exam_score
+FROM student_performance
+GROUP BY Sleep_Hours_Per_Day
+ORDER BY Sleep_Hours_Per_Day;</code></pre>
+
+        <h4>Exam Score by Parental Involvement</h4>
+        <pre class="code-block"><code>SELECT
+    Parental_Involvement,
+    ROUND(AVG(Exam_Score), 2) AS avg_exam_score
+FROM student_performance
+GROUP BY Parental_Involvement
+ORDER BY avg_exam_score DESC;</code></pre>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Dashboard Overview</h2>
+        <p>
+          A Power BI dashboard was developed to make the findings easier to explore visually.
+          It includes KPI cards, trend charts and category comparisons to help identify the
+          strongest drivers of student performance.
+        </p>
+
+        <ul class="project-list">
+          <li>KPI cards showing average exam score and other headline metrics</li>
+          <li>Charts comparing study hours, attendance and sleep patterns</li>
+          <li>Breakdowns by parental involvement and other student factors</li>
+          <li>Interactive filters to explore patterns across the dataset</li>
+        </ul>
+
+        <div class="dashboard-frame">
+          <iframe
+            title="Student Performance Dashboard"
+            width="100%"
+            height="550"
+            src="YOUR-POWER-BI-EMBED-LINK-HERE"
+            frameborder="0"
+            allowFullScreen="true">
+          </iframe>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Key Insights</h2>
+        <div class="insights-grid">
+          <div class="insight-card">
+            <h3>Study Time Matters</h3>
+            <p>
+              Students who spent more time studying generally achieved stronger exam results,
+              showing a positive relationship between study habits and academic performance.
+            </p>
+          </div>
+
+          <div class="insight-card">
+            <h3>Attendance Has Strong Influence</h3>
+            <p>
+              Higher attendance was associated with better scores, suggesting that consistent
+              engagement plays a major role in student success.
+            </p>
+          </div>
+
+          <div class="insight-card">
+            <h3>Lifestyle Balance Is Important</h3>
+            <p>
+              Sleep patterns also appeared to affect performance, indicating that academic
+              outcomes are influenced by lifestyle as well as study effort.
+            </p>
+          </div>
+
+          <div class="insight-card">
+            <h3>Support Systems Contribute</h3>
+            <p>
+              Factors such as parental involvement may also influence outcomes, highlighting
+              the importance of a supportive learning environment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Conclusion</h2>
+        <p>
+          This project shows that student performance is shaped by a combination of academic,
+          behavioural and environmental factors. While increased study time supports stronger
+          results, attendance and lifestyle habits also appear to play a key role.
+        </p>
+        <p>
+          By combining structured analysis with interactive reporting, this project demonstrates
+          how data can be used to uncover patterns, support evidence-based decisions and communicate
+          findings clearly to different audiences.
+        </p>
+      </div>
+    </section>
+
+    <section class="project-section">
+      <div class="container">
+        <h2>Project Files</h2>
+        <div class="project-links">
+          <a class="project-button" href="https://github.com/bukkiefrancis/Portfolio" target="_blank">View Repository</a>
+          <a class="project-button" href="projects.html">Back to Projects</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <p>© 2026 Bukky Francis. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
