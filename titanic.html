@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Titanic Survival Analysis | Bukky Francis</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <nav class="nav">
+    <div class="brand">Bukky Francis</div>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="projects.html" class="active">Projects</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main class="project-page">
+
+  <!-- HERO -->
+  <section class="project-hero">
+    <span class="badge">SQL • Excel • Power BI</span>
+    <h1>Titanic Survival Analysis</h1>
+
+    <p>
+      This project explores survival patterns from the Titanic disaster using SQL,
+      Excel and data visualisation techniques. The aim was to understand how factors
+      such as gender, passenger class, age and family size influenced survival outcomes.
+    </p>
+
+    <div class="project-meta">
+      <span class="pill">Data Cleaning</span>
+      <span class="pill">Pivot Tables</span>
+      <span class="pill">SQL</span>
+      <span class="pill">powerbi</span>
+    </div>
+
+    <div class="project-links">
+      <a href="projects.html" class="btn btn-outline">Back to Projects</a>
+    </div>
+  </section>
+
+  <!-- INTRO + OBJECTIVES + METHODS + FILES -->
+  <section class="project-section project-layout">
+
+    <div class="intro-box">
+      <h2>Introduction</h2>
+
+      <p>
+        The Titanic dataset is widely used in data analysis as it contains multiple
+        variables that may influence survival outcomes. This project investigates
+        patterns within the dataset to better understand how social and demographic
+        factors affected survival during the disaster.
+      </p>
+
+      <p>
+        By combining Excel analysis with SQL queries, the dataset was explored
+        systematically to uncover meaningful insights and communicate them clearly.
+      </p>
+    </div>
+
+    <div class="analysis-box">
+      <h2>Objectives</h2>
+
+      <ul>
+        <li>Explore survival patterns within the Titanic dataset.</li>
+        <li>Identify which variables influenced survival outcomes.</li>
+        <li>Use SQL and Excel analysis to uncover trends.</li>
+      </ul>
+
+      <h2>Methods Used</h2>
+
+      <ul>
+        <li>Data cleaning and preparation in Excel</li>
+        <li>Exploratory analysis using pivot tables</li>
+        <li>SQL queries for grouped statistics</li>
+        <li>Power BI dashboard creation</li>
+      </ul>
+
+      <h2>Project Files</h2>
+
+      <p>
+      
+        Files are hosted on GitHub as part of the project repository.View the dataset and SQL scripts used in this analysis 
+      </p>
+
+      <div class="project-links">
+        <a href="https://github.com/bukkiefrancis/Portfolio/blob/main/titanic-dataset.xlsx"
+           class="btn btn-small"
+           target="_blank">
+          View Excel Dataset
+        </a>
+
+        <a href="https://github.com/bukkiefrancis/Portfolio/blob/main/titanic-sql-analysis.sql"
+           class="btn btn-small"
+           target="_blank">
+          View SQL File
+        </a>
+
+        </a>
+      </div>
+
+      <p class="muted">
+        
+      </p>
+    </div>
+
+  </section>
+
+  <!-- SQL -->
+  <section class="project-section">
+    <h2>SQL Analysis</h2>
+
+    <p>
+      SQL queries were used to validate the dataset, analyse survival patterns and calculate key statistics across different passenger groups.
+    </p>
+
+    <h4>Survival Rate by Gender</h4>
+    <pre class="code-block"><code>SELECT
+  Sex,
+  COUNT(*) AS passengers,
+  ROUND(AVG(Survived) * 100, 0) AS survival_rate
+FROM titanic
+GROUP BY Sex;</code></pre>
+
+    <h4>Women and Children First Analysis</h4>
+    <pre class="code-block"><code>SELECT
+  CASE
+      WHEN "age group" IN ('Child', 'Teen') THEN 'Children'
+      WHEN Sex = 'female' THEN 'Women'
+      ELSE 'Adult Men'
+  END AS passenger_group,
+  COUNT(*) AS passengers,
+  ROUND(AVG(Survived) * 100, 0) AS survival_rate
+FROM titanic
+GROUP BY passenger_group
+ORDER BY survival_rate DESC;</code></pre>
+
+    <h4>Survival by Class, Gender and Age</h4>
+    <pre class="code-block"><code>SELECT
+  CASE
+      WHEN Pclass = 1 THEN 'First Class'
+      WHEN Pclass = 2 THEN 'Second Class'
+      ELSE 'Third Class'
+  END AS passenger_class,
+  Sex,
+  "age group",
+  COUNT(*) AS passengers,
+  ROUND(AVG(Survived) * 100, 0) AS survival_rate
+FROM titanic
+GROUP BY passenger_class, Sex, "age group"
+ORDER BY survival_rate DESC;</code></pre>
+
+    <h4>Family Size Analysis</h4>
+    <pre class="code-block"><code>SELECT
+  CASE
+      WHEN "family size" = 1 THEN 'Alone'
+      WHEN "family size" BETWEEN 2 AND 4 THEN 'Small Family'
+      ELSE 'Large Family'
+  END AS family_group,
+  COUNT(*) AS passengers,
+  ROUND(AVG(Survived) * 100, 0) AS survival_rate
+FROM titanic
+GROUP BY family_group
+ORDER BY survival_rate DESC;</code></pre>
+
+    <h4>Ranking</h4>
+    <pre class="code-block"><code>SELECT
+  Pclass,
+  Sex,
+  COUNT(*) AS passengers,
+  ROUND(AVG(Survived) * 100, 0) AS survival_rate,
+  RANK() OVER (ORDER BY AVG(Survived) DESC) AS survival_rank
+FROM titanic
+GROUP BY Pclass, Sex;</code></pre>
+
+    <p class="muted">
+      These results were used to build the Power BI dashboard visualisations below.
+    </p>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="project-section">
+    <h2>Interactive Dashboard</h2>
+
+    <p>
+      The dashboard below summarises the key insights from the analysis and allows users to explore survival patterns across different passenger groups.
+    </p>
+
+    <div class="dashboard-box">
+      <iframe
+        title="TITANIC"
+        src="https://app.powerbi.com/reportEmbed?reportId=fdaf2d0f-9a35-48d6-93d9-04c9f62f84bd&autoAuth=true&ctid=00449dde-2c61-47fa-81ef-e0761befef8d&filterPaneEnabled=false&navContentPaneEnabled=false"
+        width="100%"
+        height="450"
+        frameborder="0"
+        allowFullScreen="true">
+      </iframe>
+    </div>
+  </section>
+
+  <!-- FINDINGS -->
+  <section class="project-section">
+    <h2>Findings</h2>
+
+    <h4>Key Insights</h4>
+    <ul>
+      <li>Female passengers had a much higher survival rate than male passengers (~74% vs ~19%).</li>
+      <li>First-class passengers had the highest survival rate (~63%), compared to second (~47%) and third (~24%).</li>
+      <li>Children showed better survival outcomes than adult males.</li>
+      <li>Passengers travelling alone generally had lower survival rates.</li>
+      <li>Survival was influenced by a combination of gender, class and age.</li>
+    </ul>
+  </section>
+
+  <!-- CONCLUSION -->
+  <section class="project-section">
+    <h2>Conclusion</h2>
+
+    <p>
+      This analysis shows that survival during the Titanic disaster was strongly influenced by social and demographic factors rather than chance alone.
+    </p>
+
+    <p>
+      The project demonstrates practical data analysis skills including data cleaning, SQL querying, exploratory analysis and visualisation.
+    </p>
+
+  </section>
+
+</main>
+
+</body>
+</html>
