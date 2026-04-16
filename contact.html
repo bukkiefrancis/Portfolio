@@ -1,67 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bukky Francis | Contact</title>
-
-<link rel="stylesheet" href="style.css">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bukky Francis | Contact</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header>
+  <header class="header">
+    <nav class="nav">
+      <a class="brand" href="index.html">Bukky Francis | Data Analyst</a>
 
-<nav class="navbar">
+      <ul class="nav-links">
+        <li><a href="index.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
 
-<div class="brand">
-<a href="index.html">Bukky Francis</a>
-</div>
+      <a class="btn btn-outline" href="projects.html">View Projects</a>
+    </nav>
+  </header>
 
-<div class="nav-links">
-<a href="index.html">Profile</a>
-<a href="projects.html">Projects</a>
-<a href="contact.html" class="active">Contact</a>
-</div>
+  <main class="project-page">
 
-</nav>
+    <section class="project-hero">
+      <span class="badge">Contact</span>
+      <h1>Get in Touch</h1>
+      <p>
+        Feel free to reach out for opportunities, collaborations, or any questions.
+        I’ll get back to you as soon as possible, or you can email me directly at
+        <strong>bukkiefrancis@gmail.com</strong>.
+      </p>
+    </section>
 
-</header>
+    <section class="project-section">
+      <h2>Send a Message</h2>
 
-<main class="container">
+      <div class="dashboard-box">
+        <iframe
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdQZLHI34xCXz9Mj2_-xICmEDJbwE_rIefvV0098ezz-JDEHA/viewform?embedded=true"
+          width="100%"
+          height="850"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          Loading…
+        </iframe>
+      </div>
+    </section>
 
-<h1>Contact</h1>
+    <section class="project-section">
+      <h2>Other Ways to Connect</h2>
 
-<p>
-If you'd like to connect, collaborate, or learn more about my work,
-feel free to reach out.
-</p>
+      <div class="project-links">
+        <a class="btn btn-outline" href="mailto:bukkiefrancis@gmail.com">Email Me</a>
+        <a class="btn btn-outline" href="https://github.com/bukkiefrancis" target="_blank">GitHub</a>
+      </div>
+    </section>
 
-<div class="contact-links">
+  </main>
 
-<a href="mailto:your@email.com" class="contact-item">
-Email
-</a>
+  <footer class="footer">
+    <p>© <span id="year"></span> Bukky Francis • Built with HTML & CSS</p>
+  </footer>
 
-<a href="#" class="contact-item" target="_blank">
-LinkedIn
-</a>
-
-<a href="#" class="contact-item" target="_blank">
-GitHub
-</a>
-
-</div>
-
-</main>
-
-<footer class="footer">
-
-<p>© 2026 Bukky Francis</p>
-
-</footer>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 
 </body>
-
 </html>
