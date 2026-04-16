@@ -705,3 +705,16 @@ margin-bottom: 10px;
 .analysis-box{
   padding-left: 35px;
 }
+.dashboard-box{
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255,255,255,0.6);
+}
+
+.dashboard-box iframe{
+  width: 100%;
+  border: none;
+  border-radius: var(--radius);
+}
